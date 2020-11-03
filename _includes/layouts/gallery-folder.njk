@@ -1,0 +1,14 @@
+
+    {% for image in collections.gallery %}
+
+    <style>
+    img {
+        width: 600px;
+        max-width: 95%;
+        margin: auto;
+    }
+    </style>
+
+    <img src=" {{image}}" />
+      <a href="/assets/{{image}}" data-ngthumb="/assets/{{image}}" data-ngdesc=""></a>
+    {% endfor %}

@@ -1,0 +1,8 @@
+---
+layout: layouts/base.njk
+permalink: /
+---
+
+My Photos
+{% set postslist = collections.gallery %}
+{% include "layouts/gallery-folder.njk" %}
