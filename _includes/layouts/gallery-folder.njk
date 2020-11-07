@@ -1,14 +1,25 @@
+<style>
+  img {
+    width: 250px;
+    max-width: 95%;
+    margin: auto;
+  }
+</style>
+<section class="gallery">
+  {% for image in collections.gallery %}
+    <a href="{{image}}" class="glightbox" data-gallery="gallery1">
+      <img src="thumb/{{image}}"/>
+    </a>
+  {% endfor %}
+</section>
 
-    {% for image in collections.gallery %}
-
-    <style>
-    img {
-        width: 600px;
-        max-width: 95%;
-        margin: auto;
-    }
-    </style>
-
-    <img src=" {{image}}" />
-      <a href="/assets/{{image}}" data-ngthumb="/assets/{{image}}" data-ngdesc=""></a>
-    {% endfor %}
+<script type="text/javascript">
+    const lightbox = GLightbox();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
+<script>
+var macyInstance = Macy({
+  container: '.gallery',
+  columns: 6
+});
+</script>

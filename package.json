@@ -7,12 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "eleventy --input=. --output=_site",
     "serve": "eleventy --serve"
-
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1"
+  },
+  "dependencies": {
+    "image-thumbnail": "^1.0.11",
+    "mkdirp": "^1.0.4",
+    "sharp": "^0.26.2"
   }
 }

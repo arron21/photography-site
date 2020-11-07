@@ -1,11 +1,24 @@
 <html>
   <head>
     <title>Arron McCrory Photography</title>
-   
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/glightbox.min.css"/>
+    <script src="/assets/js/glightbox.min.js" ></script>
+
+<style>
+.container {
+  width: 60em;
+  max-width: 95%;
+  margin: auto;
+
+}
+</style>
   </head>
 
-  <body class="animateBg">
-{{ content | safe }}
+  <body>
+    <div class="container">
+      {{ content | safe }}
+    </div>
   </body>
 
 </html>
