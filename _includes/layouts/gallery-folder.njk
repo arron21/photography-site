@@ -5,7 +5,9 @@
     margin: auto;
   }
 </style>
-<section class="gallery">
+
+
+    <section class="gallery">
   {% for image in collections.gallery %}
     <a href="{{image}}" class="glightbox" data-gallery="gallery1">
       <img loading="lazy" src="thumb/{{image}}"/>
