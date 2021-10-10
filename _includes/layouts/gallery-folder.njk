@@ -1,27 +1,42 @@
 <style>
-  img {
-    width: 250px;
-    max-width: 95%;
-    margin: auto;
+  figure {
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    margin: 4px;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    justify-content: center;
+  }
+  .gallery img {
+    filter: grayscale(1);
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }
+  .gallery img:hover {
+    filter: grayscale(0);
+
+  }
+  .gallery a {
+      
+    display: block;
+  
   }
 </style>
 
 
-    <section class="gallery">
+<section class="gallery">
   {% for image in collections.gallery %}
-    <a href="{{image}}" class="glightbox" data-gallery="gallery1">
-      <img loading="lazy" src="thumb/{{image}}"/>
-    </a>
+    <figure>
+      <a href="{{image}}" class="" data-lightbox="arron">
+        <img loading="lazy" src="thumb/{{image}}"/>
+      </a>
+    </figure>
   {% endfor %}
 </section>
 
-<script type="text/javascript">
-    const lightbox = GLightbox();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
-<script>
-var macyInstance = Macy({
-  container: '.gallery',
-  columns: 6
-});
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js" integrity="sha512-6gudNVbNM/cVsLUMOb8g2b/RBqtQJ3aDfRFgU+5paeaCTtbYY/Dg00MzZq7r6RvJGI2KKtPBhjkHGTL/iOe21A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
