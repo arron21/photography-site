@@ -35,7 +35,6 @@ module.exports = function (eleventyConfig) {
     console.log("Building Collections");
     console.log("--------------");
 
-    console.log(x);
     buildCollections(x);
   });
   function buildCollections(collectionGlob) {
@@ -73,7 +72,7 @@ module.exports = function (eleventyConfig) {
 
     console.log("Collections Built!");
     console.log("--------------");
-    console.log(eleventyConfig);
+
   }
 };
 
