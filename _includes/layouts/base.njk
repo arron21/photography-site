@@ -23,6 +23,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-direction: column;
+        margin: 1rem;
       }
 
       nav a {
@@ -32,19 +34,19 @@
     </style>
   </head>
 
-  <body>
-  <div>
+<body>
+  <div class="container">
     <nav>
-    <h1>📷 Arron McCrory Photography</h1>
+    <h1>Arron McCrory Photography</h1>
     <div>
       <a href="/">Photos</a>
       <a href="/about">About</a>
     </div>
     </nav>
   </div>
-    <div class="container">
+  <div class="container">
       {{ content | safe }}
-    </div>   
-  </body>
+  </div>   
+</body>
 
 </html>
