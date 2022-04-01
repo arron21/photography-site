@@ -59,7 +59,7 @@ module.exports = function (eleventyConfig) {
     for (const collection of finalCollectionSet) {
       eleventyConfig.addCollection(collection, function (collectionVar) {
         const images = fg.sync([
-          `gallery/${collection}/*`,
+          `_src/gallery/${collection}/*`,
           "!**/_site",
           "!**/_thumb",
         ]);
@@ -86,11 +86,11 @@ function buildThumbnails(thumbnailArray) {
 
     imgStr.pop();
     imgStr = imgStr.join("/");
-    const made = mkdirp.sync("thumb/" + imgStr);
+    const made = mkdirp.sync("_src/thumb/" + imgStr);
 
     sharp(img)
       .resize({ width: 250 })
-      .toFile("thumb/" + img);
+      .toFile("_src/thumb/" + img);
   }
   console.log("--------------");
   console.log("Thumbnails Built!");
