@@ -5,4 +5,69 @@ permalink: /
 
 {% set postslist = collections.gallery %}
 
-{% include "layouts/gallery-folder.njk" %}
+<section class="home">
+	<h1 class="red">ARRON</h1>
+	<h1 class="white">ARRON</h1>
+
+{% for image in collections.gallery %}
+        <img loading="lazy" src="thumb/{{image}}"/>
+
+  {% endfor %}
+</section>
+<section class="header">
+	<div>ARRON</div>
+	<div class="menuTrigger">MENU</div>
+</section>
+<section class="menu">
+	<span class="link">
+		<label>Home</label> <a href="#">Home</a></span>
+	<span class="link">
+		<label>Portfolio</label> <a href="#">Portfolio</a></span>
+	<span class="link">
+		<label>About</label> <a href="#">About</a></span>
+
+	<div class="big-title">ARRON</div>
+
+</section>
+
+<script>
+    const menuEl = document.getElementsByClassName("menu")[0];
+console.log("menuel" + menuEl);
+console.log(menuEl);
+
+const menuTrigger = document.getElementsByClassName("menuTrigger")[0];
+const header = document.getElementsByClassName("header")[0];
+
+menuTrigger.addEventListener("click", function () {
+	menuEl.classList.toggle("active");
+	header.classList.toggle("active");
+});
+
+const slideShow = setInterval(imageRotator, 3000);
+
+let lastNumber = 0;
+function imageRotator() {
+	console.log("move");
+	const images = document.querySelectorAll(".home img");
+	console.log(images);
+	images.forEach((x) => (x.style.display = "none"));
+	let ran = getRandomInt(images.length);
+	console.log(ran);
+	if (ran == lastNumber) {
+		imageRotator();
+		return;
+	}
+
+	images[ran].style.display = "block";
+
+	lastNumber = ran;
+}
+
+function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
+}
+
+imageRotator(); //call 1 time onload
+
+    </script>
+{# {% include "layouts/gallery-folder.njk" %} #}

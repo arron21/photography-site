@@ -8,6 +8,7 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 	h1 {
 		position: fixed;
 		font-size: $big;
+		letter-spacing: .5em;
 		.red {
 			z-index: 4;
 			mix-blend-mode: color-burn;
@@ -19,7 +20,8 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 		}
 	}
 	img {
-		height: 100vh;
+		// height: 100vh;
+		width: auto;
 		position: fixed;
 		z-index: 1;
 	}

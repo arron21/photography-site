@@ -7,12 +7,10 @@ const galleryImagesA = fg(["**/gallery/**", "!**/_site", "!**/thumb"]).then(
     console.log("--------------");
     console.log("Building Thumbnails");
     console.log("--------------");
-
-    console.log(x);
     buildThumbnails(x);
   }
 );
-// Run search for images in /gallery
+// Run search for images in /_src/gallery
 const galleryImages = fg.sync(["_src/gallery/**/*", "!**/_site", "!**/_thumb"]);
 
 module.exports = function (eleventyConfig) {
@@ -21,18 +19,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("_src/assets");
 
   //Create collection of gallery images
-  eleventyConfig.addCollection("_src/gallery", function (collection) {
+  eleventyConfig.addCollection("gallery", function (collection) {
     return galleryImages;
   });
 
   // Build Collections based on Folder in /gallery
   const collectionFolders = fg([
-    "**/gallery/**",
+    "/_src/gallery/**",
     "!**/_site",
     "!**/thumb",
   ]).then((x) => {
     console.log("--------------");
-    console.log("Building Collections");
+    console.log("Building " + collectionFolders + " Collections");
     console.log("--------------");
 
     buildCollections(x);
@@ -41,7 +39,6 @@ module.exports = function (eleventyConfig) {
     console.log("--------------");
     console.log("Building Collections");
     console.log("--------------");
-    console.log(collectionGlob);
     // return;
     const collections = [];
     for (const img of collectionGlob) {
@@ -59,15 +56,13 @@ module.exports = function (eleventyConfig) {
     for (const collection of finalCollectionSet) {
       eleventyConfig.addCollection(collection, function (collectionVar) {
         const images = fg.sync([
-          `_src/gallery/${collection}/*`,
+          `gallery/${collection}/*`,
           "!**/_site",
           "!**/_thumb",
         ]);
         return images;
       });
     }
-
-    console.log(finalCollectionSet);
 
     console.log("--------------");
     console.log("Collections Built!");
@@ -77,6 +72,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setBrowserSyncConfig({
     files: './_site/css/**/*.css'
   });
+
+  return {
+    dir: {
+      input: "_src",
+      output: "_site"
+    }
+  }
 };
 
 function buildThumbnails(thumbnailArray) {
@@ -86,11 +88,16 @@ function buildThumbnails(thumbnailArray) {
 
     imgStr.pop();
     imgStr = imgStr.join("/");
-    const made = mkdirp.sync("_src/thumb/" + imgStr);
+    let shorterThumbStr = img.replace('_src/', '');
 
+    // remove the actual file name from the shorterThumbStr
+    const THUMB_PATH = `_src/thumb/_src/${shorterThumbStr.split('/').slice(0, 2).join('/')}`
+    mkdirp.sync(THUMB_PATH);
+
+    const shorterImg = img.replace('_src/', '');
     sharp(img)
-      .resize({ width: 250 })
-      .toFile("_src/thumb/" + img);
+      .resize({ width: 768 })
+      .toFile("_src/thumb/_src/" + shorterImg);
   }
   console.log("--------------");
   console.log("Thumbnails Built!");
