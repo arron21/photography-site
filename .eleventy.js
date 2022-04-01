@@ -13,15 +13,15 @@ const galleryImagesA = fg(["**/gallery/**", "!**/_site", "!**/thumb"]).then(
   }
 );
 // Run search for images in /gallery
-const galleryImages = fg.sync(["gallery/**/*", "!**/_site", "!**/_thumb"]);
+const galleryImages = fg.sync(["_src/gallery/**/*", "!**/_site", "!**/_thumb"]);
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("gallery");
-  eleventyConfig.addPassthroughCopy("thumb");
-  eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("_src/gallery");
+  eleventyConfig.addPassthroughCopy("_src/thumb");
+  eleventyConfig.addPassthroughCopy("_src/assets");
 
   //Create collection of gallery images
-  eleventyConfig.addCollection("gallery", function (collection) {
+  eleventyConfig.addCollection("_src/gallery", function (collection) {
     return galleryImages;
   });
 
@@ -68,12 +68,15 @@ module.exports = function (eleventyConfig) {
     }
 
     console.log(finalCollectionSet);
-    console.log("--------------");
 
+    console.log("--------------");
     console.log("Collections Built!");
     console.log("--------------");
-
   }
+
+  eleventyConfig.setBrowserSyncConfig({
+    files: './_site/css/**/*.css'
+  });
 };
 
 function buildThumbnails(thumbnailArray) {
