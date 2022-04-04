@@ -18,10 +18,65 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("_src/thumb");
   eleventyConfig.addPassthroughCopy("_src/assets");
 
+  // start build cleanedCollections
+  let collections = [];
+  for (let g of galleryImages) {
+    const b = g.replace('_src/gallery/', '');
+    const collectionAndImageName = b.split('/');
+    collections.push(collectionAndImageName[0])
+  }
+  const cleanedCollections = [... new Set(collections)];
+  console.log(cleanedCollections)
+  eleventyConfig.addCollection('allCollection', function (collection) {
+    return cleanedCollections;
+  });
+  // end build cleanedCollections & allCollection
+
+  // start build cleanedCollections
+  let cleanedGalleryImages = [];
+  for (let g of galleryImages) {
+    const b = g.replace('_src', '');
+    cleanedGalleryImages.push(b)
+  }
+  console.log(cleanedGalleryImages)
+  // end build cleanedCollections
+
+  // start build collections with specific images
+  const cCImages = {};
+  for (let cC of cleanedCollections) {
+    cCImages[cC] = []
+  }
+  for (let cC of cleanedCollections) {
+    for (let g of galleryImages) {
+      if (g.includes(cC)) {
+        cCImages[cC].push(g)
+      }
+    }
+  }
+  console.log(cCImages)
+
+  const COLLECTIONS_WITH_IMAGES = Object.entries(cCImages);
+  console.log(COLLECTIONS_WITH_IMAGES);
+  for (let CWT of COLLECTIONS_WITH_IMAGES) {
+    const collectionName = CWT[0];
+    const collectionImages = CWT[1];
+    const cleanedCollectionImages = collectionImages.map(img => cleanImageString(img))
+    eleventyConfig.addCollection(collectionName, function (collection) {
+      return cleanedCollectionImages;
+    });
+  }
+  console.log(eleventyConfig.collections)
+
+
+  // end build collections with specific images
+
+
   //Create collection of gallery images
   eleventyConfig.addCollection("gallery", function (collection) {
-    return galleryImages;
+    return cleanedGalleryImages;
   });
+  console.log(eleventyConfig.collections)
+
 
   // Build Collections based on Folder in /gallery
   const collectionFolders = fg([
@@ -102,4 +157,8 @@ function buildThumbnails(thumbnailArray) {
   console.log("--------------");
   console.log("Thumbnails Built!");
   console.log("--------------");
+}
+
+function cleanImageString(imageString) {
+  return imageString.replace('_src/', '')
 }

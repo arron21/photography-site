@@ -1,7 +1,15 @@
 $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
-
+$padding: 64px;
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Jost', sans-serif;
+}
+.container {
+	padding: $padding;
+}
 .home {
-	height: 100vh;
+	height: calc(100vh - $padding * 2);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -9,6 +17,8 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 		position: fixed;
 		font-size: $big;
 		letter-spacing: .5em;
+		font-family: 'Jost', sans-serif;
+		font-weight: 200;
 		.red {
 			z-index: 4;
 			mix-blend-mode: color-burn;
@@ -22,6 +32,7 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 	img {
 		// height: 100vh;
 		width: auto;
+		max-width: 100%;
 		position: fixed;
 		z-index: 1;
 	}
@@ -49,7 +60,7 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 
 	bottom: 100%;
 	height: calc(100vh - 128px);
-	padding: 64px 0;
+	padding: 64px;
 	color: white;
 	width: 100vw;
 
@@ -61,22 +72,20 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 	}
 	.big-title {
 		position: absolute;
-		right: 0;
+		right: 164px;
 		bottom: 0;
 		font-size: 132px;
-		text-indent: 20px;
-		width: 50%;
+		text-indent: 80px;
+		line-height: 0.8;
+		width: 320px;
 		word-break: break-all;
-		&:hover {
-			font-family: "Fugaz One", cursive;
-		}
 	}
 }
 
 .link {
 	margin-bottom: 30px;
 	display: block;
-	perspective: 2000px;
+	perspective: 3420px;
 	perspective-origin: 50% 50%;
 	position: relative;
 	font-size: 120px;
@@ -101,7 +110,6 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 			translate3d(0px, 0px, 30px) skew(0deg, 0deg);
 	}
 	a {
-		font-family: "Fugaz One", cursive;
 		text-decoration: none;
 		color: inherit;
 		transition: 100ms all;
@@ -116,6 +124,7 @@ $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 }
 
 .menuTrigger {
+	cursor: pointer;
 	&.active {
 		color: white;
 	}
