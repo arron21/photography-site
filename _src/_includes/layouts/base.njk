@@ -21,7 +21,7 @@
 	<span class="link">
 		<label>About</label> <a href="/about">About</a></span>
 
-	<div class="big-title">ARRONPHOTOGRAPHY</div>
+	<div class="big-title randomFadeIn">ARRONPHOTOGRAPHY</div>
 
 </section>
 
@@ -61,11 +61,33 @@ function imageRotator() {
 	lastNumber = ran;
 }
 
+imageRotator(); //call 1 time onload
+
+
+const textEl = document.getElementsByClassName("randomFadeIn")[0];
+const text = document.getElementsByClassName("randomFadeIn")[0].innerText;
+
+const arr = text.split("");
+
+textEl.innerText = "";
+for (let l of arr) {
+	let p = document.createElement("span");
+	p.style.opacity = 0;
+	const time = getRandomInt(10000);
+	p.append(l);
+
+	textEl.append(p);
+	setTimeout(() => {
+		p.style.opacity = 1;
+	}, time);
+}
+
+
+
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
 }
 
-imageRotator(); //call 1 time onload
 
     </script>
 </body>

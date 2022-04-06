@@ -1,5 +1,6 @@
 $big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
 $padding: 64px;
+$tablet: 500px;
 body {
 	margin: 0;
 	padding: 0;
@@ -74,11 +75,16 @@ body {
 		position: absolute;
 		right: 164px;
 		bottom: 0;
-		font-size: 132px;
+		font-size: $big;
 		text-indent: 80px;
 		line-height: 0.8;
 		width: 320px;
 		word-break: break-all;
+		@media screen and (max-width: $tablet)   {
+			right: 0;
+			left: 0;
+			width: 100vw;
+		}
 	}
 }
 
@@ -88,10 +94,14 @@ body {
 	perspective: 3420px;
 	perspective-origin: 50% 50%;
 	position: relative;
-	font-size: 120px;
+	font-size: $big;
 	height: 1em;
 	transform-style: preserve-3d;
 	transition: 400ms all;
+	@media (hover: none)  {
+		transform: scale3d(1, 1, 1) rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(0px, 0px, 0px) skew(0deg, 0deg);
+	}
+
 	&:hover {
 		font-style: italic;
 		transform: scale3d(1, 1, 1) rotateX(90deg) rotateY(0deg) rotateZ(0deg)
@@ -128,4 +138,9 @@ body {
 	&.active {
 		color: white;
 	}
+}
+
+
+.randomFadeIn span {
+	transition: opacity 100ms ease-in-out;
 }
