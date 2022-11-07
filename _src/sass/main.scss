@@ -1,4 +1,4 @@
-$big: clamp(4rem, -0.875rem + 15.333vw, 20vw);
+$big: 48px;
 $padding: 64px;
 $tablet: 500px;
 body {
@@ -8,6 +8,9 @@ body {
 }
 .container {
 	padding: $padding;
+	@media screen and (max-width: 758px) {
+		padding: 4px;
+	}
 }
 .home {
 	height: calc(100vh - $padding * 2);
@@ -73,64 +76,30 @@ body {
 	}
 	.big-title {
 		position: absolute;
-		right: 164px;
+		right: 148px;
 		bottom: 0;
 		font-size: $big;
-		text-indent: 80px;
-		line-height: 0.8;
-		width: 320px;
-		word-break: break-all;
-		@media screen and (max-width: $tablet)   {
-			right: 0;
-			left: 0;
-			width: 100vw;
-		}
+		text-align: right;
+
+		// width: 320px;
+		// word-break: break-all;
+
 	}
 }
 
 .link {
 	margin-bottom: 30px;
 	display: block;
-	perspective: 3420px;
-	perspective-origin: 50% 50%;
+	// perspective: 3420px;
+	// perspective-origin: 50% 50%;
 	position: relative;
 	font-size: $big;
 	height: 1em;
-	transform-style: preserve-3d;
-	transition: 400ms all;
-	@media (hover: none)  {
-		transform: scale3d(1, 1, 1) rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(0px, 0px, 0px) skew(0deg, 0deg);
-	}
 
-	&:hover {
-		font-style: italic;
-		transform: scale3d(1, 1, 1) rotateX(90deg) rotateY(0deg) rotateZ(0deg)
-			translate3d(0px, 0px, 0px) skew(0deg, 0deg);
-	}
-
-	label {
-		position: absolute;
-		left: 0;
-		top: 0;
-		backface-visibility: hidden;
-		transition: 100ms all;
-		font-size: 80%;
-		text-indent: 30px;
-		transform: scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)
-			translate3d(0px, 0px, 30px) skew(0deg, 0deg);
-	}
 	a {
-		text-decoration: none;
-		color: inherit;
-		transition: 100ms all;
-
-		backface-visibility: hidden;
-		position: absolute;
-		left: 0;
-		top: 0;
-		transform: scale3d(1, 1, 1) rotateX(-90deg) rotateY(0deg) rotateZ(0deg)
-			translate3d(0px, 0px, 30px) skew(0deg, 0deg);
+		color: white;
 	}
+
 }
 
 .menuTrigger {

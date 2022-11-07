@@ -5,10 +5,17 @@
     margin: 4px;
   }
 
+
   .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
     justify-content: center;
+  }
+
+  @media screen and (max-width: 758px) {
+    .gallery {
+      grid-template-columns:1fr 1fr;
+    }
   }
   .gallery img {
     filter: grayscale(1);
