@@ -50,11 +50,21 @@ body {
 	display: flex;
 	z-index: 99;
 	justify-content: space-between;
+	background: #ffffff00;
+    backdrop-filter: blur(21px);
 	&.active {
 		color: white;
 	}
 	> div {
 		padding: 24px;
+	}
+	a {
+		// font-weight: 900;
+		text-shadow: 1px 1px #fff;
+		color:rgb(0, 0, 0);
+		margin: .25rem;
+		padding: .75rem;
+		text-decoration: none;
 	}
 }
 

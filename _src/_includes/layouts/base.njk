@@ -10,20 +10,17 @@
 
 <body>
   <section class="header">
-	<div>ARRON</div>
-	<div class="menuTrigger">MENU</div>
-</section>
-<section class="menu">
-	<span class="link">
-		<a href="/">Home</a></span>
-	<span class="link">
-		<a href="/gallery">Portfolio</a></span>
-	<span class="link">
-		<a href="/about">About</a></span>
+	<div><a href="/">ARRON</a></div>
+	<div>
 
-	<div class="big-title">ARRON PHOTOGRAPHY</div>
-
+	<nav>
+		<a href="/">Home</a>
+		<a href="/gallery">Portfolio</a>
+		<a href="/about">About</a>
+	</nav>
+	</div>
 </section>
+
 
   <div class="container">
       {{ content | safe }}
@@ -33,15 +30,7 @@
 
   
 <script>
-    const menuEl = document.getElementsByClassName("menu")[0];
 
-const menuTrigger = document.getElementsByClassName("menuTrigger")[0];
-const header = document.getElementsByClassName("header")[0];
-
-menuTrigger.addEventListener("click", function () {
-	menuEl.classList.toggle("active");
-	header.classList.toggle("active");
-});
 
 const slideShow = setInterval(imageRotator, 3000);
 
@@ -63,7 +52,7 @@ function imageRotator() {
 
 imageRotator(); //call 1 time onload
 
-
+/**
 const textEl = document.getElementsByClassName("randomFadeIn")[0];
 const text = document.getElementsByClassName("randomFadeIn")[0].innerText;
 
@@ -81,7 +70,7 @@ for (let l of arr) {
 	}, time);
 }
 
-
+*/
 
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
