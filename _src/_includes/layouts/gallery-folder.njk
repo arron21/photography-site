@@ -1,36 +1,24 @@
 <style>
-  figure {
-    overflow: hidden;
-    aspect-ratio: 1 / 1;
-    margin: 4px;
+  .container {
+    padding: 0px;
   }
-
-
+  
   .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
   }
 
-  @media screen and (max-width: 758px) {
-    .gallery {
-      grid-template-columns:1fr 1fr;
-    }
+  figure {
+    margin: 0;
+    padding: 0;
   }
-  .gallery img {
-    filter: grayscale(1);
-    width: 100%;
-    object-fit: cover;
-    height: 100%;
-  }
-  .gallery img:hover {
-    filter: grayscale(0);
 
-  }
-  .gallery a {
-      
-    display: block;
-  
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
   }
 </style>
 
