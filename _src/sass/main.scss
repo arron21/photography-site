@@ -9,7 +9,8 @@ body {
 .container {
 	padding: $padding;
 	@media screen and (max-width: 758px) {
-		padding: 4px;
+		padding: 16px;
+		margin-top: 78px;
 	}
 }
 .home {
@@ -50,17 +51,22 @@ body {
 	display: flex;
 	z-index: 99;
 	justify-content: space-between;
-	background: #ffffff00;
-    backdrop-filter: blur(21px);
+	background: #fff;
+	@media screen and (max-width: 758px) {
+		flex-direction: column;
+	}
+    // backdrop-filter: blur(21px);
 	&.active {
 		color: white;
 	}
 	> div {
 		padding: 24px;
+		@media screen and (max-width: 758px) {
+			padding: 12px;
+		}
 	}
 	a {
-		// font-weight: 900;
-		text-shadow: 1px 1px #fff;
+		font-weight: 900;
 		color:rgb(0, 0, 0);
 		margin: .25rem;
 		padding: .75rem;
